@@ -7,9 +7,11 @@ public abstract class ClientExtensionBase {
 
 	protected Project project;
 
-	protected boolean initialized = false;
+	protected boolean initialized;
 
 	protected Client client;
+
+	protected boolean logCommandLine;
 
 	protected abstract void init();
 
@@ -25,5 +27,14 @@ public abstract class ClientExtensionBase {
 
 	public Client client(Closure closure) {
 		return (Client) project.configure(client, closure);
+	}
+
+	public boolean isLogCommandLine() {
+		init();
+		return logCommandLine;
+	}
+
+	public void setLogCommandLine(Boolean logCommandLine) {
+		this.logCommandLine = logCommandLine;
 	}
 }
