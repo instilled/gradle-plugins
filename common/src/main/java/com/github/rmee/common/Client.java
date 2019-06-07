@@ -374,7 +374,9 @@ public abstract class Client {
 			for (String arg : args) {
 				commandLine.add(mapArg(arg));
 			}
-			System.out.println("Executing: " + commandLine.stream().collect(Collectors.joining(" ")));
+			if(extension.isLogCommandLine()) {
+				System.out.println("Executing: " + commandLine.stream().collect(Collectors.joining(" ")));
+			}
 			execSpec.setCommandLine(commandLine);
 
 		} else {
